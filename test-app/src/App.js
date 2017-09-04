@@ -8,6 +8,11 @@ import NumberList from './List/NumberList';
 
 import NameForm from './Form/NameForm';
 
+import Card from './Card';
+import WelcomeCard from './Card/WelcomeCard';
+
+import FilteredProductTable from './FilteredProductTable/FilteredProductTable';
+
 class App extends Component {
   
   constructor(props) {
@@ -18,6 +23,14 @@ class App extends Component {
   }
 
   render() {
+    const products = [
+      {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
+      {category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball'},
+      {category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball'},
+      {category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch'},
+      {category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5'},
+      {category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7'}
+    ]
     return (
       <div className="App">
         <div className="App-header">
@@ -25,16 +38,34 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
 
-        <div className="App-section">
-          <CounterForm />
-        </div>
-        
-        <div className="App-section">
-        <NumberList numbers={this.state.numbers} />
-        </div>
+        <div className="App-content">
+          <div className="App-section">
+            <Card>
+              <CounterForm />
+            </Card>
+          </div>
+          
+          <div className="App-section">
+            <Card>
+              <NumberList numbers={this.state.numbers} />
+            </Card>
+          </div>
+          
+          <div className="App-section">
+            <Card>
+              <NameForm />
+            </Card>
+          </div>
 
-        <div className="App-section">
-        <NameForm />
+          <div className="App-section">
+            <WelcomeCard />
+          </div>
+
+          <div className="App-section">
+            <Card title="Filtered List">
+              <FilteredProductTable products={products}/>
+            </Card>
+          </div>
         </div>
 
       </div>

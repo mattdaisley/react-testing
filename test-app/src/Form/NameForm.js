@@ -49,7 +49,6 @@ class NameForm extends Component {
   }
 
   render() {
-    const nameCase = this.state.case;
     const name = this.state.name;
     
     const nameLower = this.convertCase(name, this.toLower);
